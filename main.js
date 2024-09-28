@@ -53,24 +53,24 @@ let salesPerMillion = data.map(item => item["Sales per million"])
 let releaseDate = data.map(item => item["Release date"])
 
 let trace = {
-    x: releaseDate,         // Eje X: Fechas de lanzamiento
-    y: salesPerMillion,                // Eje Y: Ventas por millón
-    type: 'bar',             // Tipo de gráfico: barras
-    text: albumName,        // Etiquetas de las barras
-    textposition: 'auto',    // Posición del texto en las barras
+    x: releaseDate,       
+    y: salesPerMillion,          
+    type: 'bar',            
+    text: albumName,       
+    textposition: 'auto',   
     marker: {
-        color: 'skyblue',    // Color de las barras
+        color: 'skyblue',   
     }
 };
 
 let layout = {
-    title: 'Ventas de Álbumes por Fecha de Lanzamiento',
+    title: 'Ventas físicas en millones de dólares de álbumes Coldplay',
     xaxis: {
         title: 'Fecha de Lanzamiento',
-        tickangle: -45          // Rotar las etiquetas del eje X
+        tickangle: -45     
     },
     yaxis: {
-        title: 'Ventas por Millón',
+        title: 'Ventas en millones de dolares',
     }
 };
 
@@ -79,32 +79,10 @@ Plotly.newPlot('ColdplayPlot', [trace], layout);
 
 
 
-// let play = document.getElementById("playButton");
+// let play = document.getElementById("boton");
 // function playMusic(){
 //     let audio = new Audio("audio.mp3");
 //     audio.play()
 // }
 // play.addEventListener("click", playMusic);
 
-async function playSong() {
-  // Cargar la canción
-  const player = new Tone.Player({
-      url: "https://github.com/NachoRinda/NachoRinda.github.io/blob/main/audio.mp3",
-      loop: false,
-      autostart: false
-  });
-  
-  // new Tone.Player("audio.mp3").toDestination();
-
-  // Esperar a que la canción esté lista
-  await player.load();
-
-  // Reproducir la canción
-  player.start();
-}
-
-// Evento de clic en el botón
-document.getElementById("playButton").addEventListener("click", () => {
-  Tone.start(); // Iniciar el contexto de audio
-  playSong();   // Llamar a la función para reproducir la canción
-});
