@@ -87,19 +87,24 @@ Plotly.newPlot('ColdplayPlot', [trace], layout);
 // play.addEventListener("click", playMusic);
 
 async function playSong() {
-    try {
-        await Tone.start(); // Iniciar el contexto de audio
-        const player = new Tone.Player("audio.mp3").toDestination(); // Asegúrate de que la ruta sea correcta
-        console.log("Cargando la canción...");
-        await player.load(); // Espera a que la canción se cargue
-        console.log("Canción cargada, reproduciendo...");
-        player.start(); // Reproducir la canción
-    } catch (error) {
-        console.error("Error al reproducir la canción:", error);
-    }
+  // Cargar la canción
+  const player = new Tone.Player({
+      url: "https://github.com/NachoRinda/NachoRinda.github.io/blob/main/audio.mp3",
+      loop: false,
+      autostart: false
+  });
+  
+  // new Tone.Player("audio.mp3").toDestination();
+
+  // Esperar a que la canción esté lista
+  await player.load();
+
+  // Reproducir la canción
+  player.start();
 }
 
 // Evento de clic en el botón
 document.getElementById("playButton").addEventListener("click", () => {
-    playSong(); // Llamar a la función para reproducir la canción
+  Tone.start(); // Iniciar el contexto de audio
+  playSong();   // Llamar a la función para reproducir la canción
 });

@@ -1,7 +1,7 @@
 async function playSong() {
     // Cargar la canción
     const player = new Tone.Player({
-        url: "audio.mp3",
+        url: "https://github.com/NachoRinda/NachoRinda.github.io/blob/main/audio.mp3",
         loop: false,
         autostart: false
     });
